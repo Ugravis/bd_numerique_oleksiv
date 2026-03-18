@@ -5,6 +5,10 @@
   <div>
     <h1>Vinnytsia</h1>
 
-    <p>BD numérique et intéractive</p>
+    <p>Description</p>
+
+    <routerLink :to="{ name: 'story_1' }">
+      Prendre place dans l'Assemblée
+    </routerLink>
   </div>
 </template>
