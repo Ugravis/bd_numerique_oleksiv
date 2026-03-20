@@ -1,6 +1,6 @@
 <template>
   <img 
-    src="/drawings/intro.png" 
+    src="/drawings/intro.jpg" 
     alt="intro"
     class="bd-full-page-main"
   >

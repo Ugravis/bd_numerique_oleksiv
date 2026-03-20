@@ -1,6 +1,6 @@
 <template>
   <img 
-    src="/drafts/conclu.png" 
+    src="/drawings/conclu.png" 
     alt="intro"
     class="bd-full-page-main"
   >

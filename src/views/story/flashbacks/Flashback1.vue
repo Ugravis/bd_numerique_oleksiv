@@ -7,8 +7,8 @@ import Helper from '@/components/helpers/Helper.vue';
   <div class="canva-subox">
     <div class="canva-box">
       <RevealPage
-        baseImageUrl="/drafts/flash_assemblee_1.png"
-        revealImageUrl="/drafts/flash_assemblee_2.png"
+        baseImageUrl="/drawings/flash_assemblee_1.png"
+        revealImageUrl="/drawings/flash_assemblee_2.png"
         :id="1"
       />
 

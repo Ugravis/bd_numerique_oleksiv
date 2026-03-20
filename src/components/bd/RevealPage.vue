@@ -21,7 +21,7 @@
   let revealImg = new Image()
 
   let isDragging = false
-  let cursor = { x: 160, y: 110 }
+  let cursor = { x: 160, y: 105 }
   const width = 300 
   const height = 200 
 
