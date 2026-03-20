@@ -6,6 +6,9 @@
     revealImageUrl: string
   }>()
 
+  let handleImg = new Image()
+  handleImg.src = '/icons/move.svg'
+
   const canvasRef = ref<HTMLCanvasElement | null>(null)
 
   let ctx: CanvasRenderingContext2D | null = null
@@ -42,6 +45,29 @@
     ctx.drawImage(revealImg, 0, 0, canvas.width, canvas.height)
 
     ctx.restore()
+
+    ctx.lineWidth = 2
+    ctx.strokeStyle = 'black'
+    ctx.strokeRect(
+      cursor.x - width / 2,
+      cursor.y - height / 2,
+      width,
+      height
+    )
+
+    const handleSize = 24
+    const padding = 10
+
+    const rectX = cursor.x - width / 2
+    const rectY = cursor.y - height / 2
+
+    ctx.drawImage(
+      handleImg,
+      rectX + width - handleSize - padding,
+      rectY + height - handleSize - padding,
+      handleSize,
+      handleSize
+    )
   }
 
   function updateCursor(e: MouseEvent | TouchEvent) {
@@ -62,6 +88,18 @@
     cursor.y = clientY - rect.top
 
     draw()
+  }
+
+  function isInRect(x: number, y: number) {
+    const rectX = cursor.x - width / 2
+    const rectY = cursor.y - height / 2
+
+    return (
+      x >= rectX &&
+      x <= rectX + width &&
+      y >= rectY &&
+      y <= rectY + height
+    )
   }
 
   onMounted(() => {
@@ -85,7 +123,21 @@
     canvas.addEventListener('mouseleave', () => (isDragging = false))
 
     canvas.addEventListener('mousemove', (e) => {
-      if (isDragging) updateCursor(e)
+      const rect = canvas.getBoundingClientRect()
+      const x = e.clientX - rect.left
+      const y = e.clientY - rect.top
+
+      if (isDragging) {
+        canvas.style.cursor = 'grabbing'
+        updateCursor(e)
+        return
+      }
+
+      if (isInRect(x, y)) {
+        canvas.style.cursor = 'grab'
+      } else {
+        canvas.style.cursor = 'default'
+      }
     })
 
     // mobile

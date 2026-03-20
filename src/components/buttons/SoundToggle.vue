@@ -31,6 +31,12 @@
 
 <style scoped>
   span {
-    font-size: 14px;
+    font-size: 1.35rem;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
   }
 </style>
