@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import RevealPage from '@/components/bd/RevealPage.vue'
+import Helper from '@/components/helpers/Helper.vue';
 </script>
 
 <template>
@@ -8,6 +9,11 @@
       <RevealPage
         baseImageUrl="/drafts/flash_carnet_1.png"
         revealImageUrl="/drafts/flash_carnet_2.png"
+        :id="2"
+      />
+
+      <Helper
+        text="Déplacez le cadre afin de révéler la réalité"
       />
     </div>
   </div>

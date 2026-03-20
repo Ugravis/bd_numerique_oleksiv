@@ -1,10 +1,15 @@
 <script setup lang="ts">
   import { ref, onMounted } from 'vue'
+  import { useMainStore } from '@/store/store'
 
   const props = defineProps<{
     baseImageUrl: string
     revealImageUrl: string
+    id: 1 | 2 | 3
   }>()
+
+  const store = useMainStore()
+  let flashbackCompleted = false
 
   let handleImg = new Image()
   handleImg.src = '/icons/move.svg'
@@ -16,7 +21,7 @@
   let revealImg = new Image()
 
   let isDragging = false
-  let cursor = { x: 0, y: 0 }
+  let cursor = { x: 160, y: 110 }
   const width = 300 
   const height = 200 
 
@@ -88,6 +93,12 @@
     cursor.y = clientY - rect.top
 
     draw()
+
+    if (!flashbackCompleted) {
+      store.completeFlashBack(props.id)
+      flashbackCompleted = true
+      console.log('complete')
+    }
   }
 
   function isInRect(x: number, y: number) {

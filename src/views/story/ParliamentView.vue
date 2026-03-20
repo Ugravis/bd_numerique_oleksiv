@@ -1,16 +1,17 @@
 <script setup lang="ts">
-  import { ref, onMounted } from 'vue'
+  import Helper from '@/components/helpers/Helper.vue'
+import { ref, onMounted } from 'vue'
   import { useRouter } from 'vue-router'
 
   const router = useRouter()
   const canvasRef = ref<HTMLCanvasElement | null>(null)
   let ctx: CanvasRenderingContext2D | null = null
   const img = new Image()
-  img.src = '/drafts/parliament.png'
+  img.src = '/drawings/parliament.png'
 
   let iconImg = new Image()
   iconImg.src = '/icons/hand_mouse.svg'
-  const iconSize = 40
+  const iconSize = 45
   const hoverScale = 1.12
 
   let mousePos = { x: 0, y: 0 }
@@ -18,9 +19,9 @@
 
   // Hotspots : coordonnées relatives (0 à 1) avec radius
   const hotspots = [
-    { x: 0.45, y: 0.42, radius: 0.06, name: 'people_flashback' },
-    { x: 0.4, y: 0.75, radius: 0.06, name: 'notes_flashback' },
-    { x: 0.3, y: 0.89, radius: 0.06, name: 'bear_flashback' }
+    { x: 0.56, y: 0.42, radius: 0.06, name: 'people_flashback' },
+    { x: 0.43, y: 0.83, radius: 0.06, name: 'notes_flashback' },
+    { x: 0.36, y: 0.95, radius: 0.06, name: 'bear_flashback' }
   ]
 
   // Dessiner l'image et les hotspots (cercles)
@@ -43,7 +44,7 @@
 
       ctx!.save()
 
-      ctx!.globalAlpha = 0.6 
+      ctx!.globalAlpha = 0.8
 
       ctx!.drawImage(iconImg, x, y, size, size)
 
@@ -117,6 +118,10 @@
   <div class="canva-subox">
     <div class="canva-box">
       <canvas ref="canvasRef"></canvas>
+
+      <Helper
+        text="Sélectionnez les objets pour dévoiler les souvenirs de Roman"
+      />
     </div>
   </div>
 </template>

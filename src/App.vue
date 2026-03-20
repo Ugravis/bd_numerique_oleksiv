@@ -9,7 +9,6 @@
     soundManager.play('ambience')
 
     document.addEventListener('click', (e) => {
-      console.log('test')
       soundManager.play('mouse')
     })
   })

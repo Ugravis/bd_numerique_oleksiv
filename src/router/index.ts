@@ -40,7 +40,7 @@ const router = createRouter({
         },
         {
           name: 'story_2',
-          path: 'parliament',
+          path: 'parlement',
           component: ParliamentView
         },
         {
@@ -51,17 +51,17 @@ const router = createRouter({
 
         {
           name: 'people_flashback',
-          path: 'souvenirs/humains',
+          path: 'souvenirs/1',
           component: Flashback1
         },
         {
           name: 'notes_flashback',
-          path: 'souvenirs/notes',
+          path: 'souvenirs/2',
           component: Flashback2
         },
         {
           name: 'bear_flashback',
-          path: 'souvenirs/famille',
+          path: 'souvenirs/3',
           component: Flashback3
         }
       ]
